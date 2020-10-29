@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Main from "./views/main";
+import CurrentStatus from "./views/current";
+import DashboardLayout from "./layout/dashboardLayout";
+import All from "./views/all";
+import Housekeeping from "./views/housekeeping";
+import Profile from "./views/profile";
+import Reservation from "./views/reservation";
+import Stay from "./views/stay";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact>
+          <Main />
+        </Route>
+        <DashboardLayout>
+          <Route path="/current" component={CurrentStatus} />
+          <Route path="/all" component={All} />
+          <Route path="/housekeeping" component={Housekeeping} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/reservation" component={Reservation} />
+          <Route path="/stay" component={Stay} />
+        </DashboardLayout>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
