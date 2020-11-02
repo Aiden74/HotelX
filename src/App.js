@@ -7,6 +7,7 @@ import Housekeeping from "./views/housekeeping";
 import Profile from "./views/profile";
 import Reservation from "./views/reservation";
 import Stay from "./views/stay";
+import Report from "./views/report";
 function App() {
   return (
     <BrowserRouter>
@@ -21,6 +22,7 @@ function App() {
           <Route path="/profile" component={Profile} />
           <Route path="/reservation" component={Reservation} />
           <Route path="/stay" component={Stay} />
+          <Route path="/report" component={Report} />
         </DashboardLayout>
       </Switch>
     </BrowserRouter>
