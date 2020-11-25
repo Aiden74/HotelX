@@ -1,81 +1,169 @@
 import React from "react";
-import { Table } from "react-bootstrap";
 import { withStyles } from "@material-ui/core/styles";
-
+import { Form, Col, Button } from "react-bootstrap";
 const styles = (theme) => ({
   //Add your styles here
 });
 class Stay extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      room: null,
+    };
+  }
   componentDidMount() {
     document.title = "Stay  - HotelX";
+    var rooms = JSON.parse(localStorage.getItem("rooms"));
+    this.setState({ room: rooms && rooms[this.props.match.params.room] });
   }
 
+  handleSubmit = (event) => {
+    var rooms = JSON.parse(localStorage.getItem("rooms"));
+    rooms[this.props.match.params.room].guest = {
+      first: event.target.first.value,
+      last: event.target.last.value,
+      checkIn: event.target.checkIn.value,
+      checkOut: event.target.checkOut.value,
+      rate: event.target.rate.value,
+      total: event.target.total.value,
+      payment: event.target.payment.value,
+      balance: event.target.balance.value,
+    };
+
+    rooms[this.props.match.params.room].status = "Unavailable/Occupied";
+
+    localStorage.setItem("rooms", JSON.stringify(rooms));
+  };
+
+  handleCheckOut = () => {
+    var rooms = JSON.parse(localStorage.getItem("rooms"));
+    rooms[this.props.match.params.room].guest = null;
+    rooms[this.props.match.params.room].status = "Unavailable/Dirty";
+    this.setState({ room: rooms && rooms[this.props.match.params.room] });
+
+    localStorage.setItem("rooms", JSON.stringify(rooms));
+    window.location.reload(false);
+  };
   render() {
     const { classes } = this.props;
     //Add your code here
     return (
       <div>
-        <Table striped bordered hover variant="dark">
-          <thead>
-            <tr>
-              <th>Guest Name</th>
-              <th>Check In Date and Time</th>
-              <th>Expected Check Out Date and Time</th>
-              <th>Room Type</th>
-              <th>Room Number</th>
-              <th>Room Rate($/Day)</th>
-              <th>Total Charge</th>
-              <th>Payments Made</th>
-              <th>Balance</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-            <td>Gunjan Gupta</td>
-              <td>07-13-2020 11.00AM</td>
-              <td>11-02-2020 7.00PM</td>
-              <td>King</td>
-              <td>312</td>
-              <td>$66</td>
-              <td>$132</td>
-              <td>Credit Card-$132.00</td>
-              <td>$0.00</td>
-            </tr>
-            <tr>
-              <td>Joyce Silvera</td>
-              <td>06-10-2020 08.00AM</td>
-              <td>12-12-2020 07.00PM</td>
-              <td>Double Queen</td>
-              <td>212</td>
-              <td>$80</td>
-              <td>$5000</td>
-              <td>Credit Card - $3000.00</td>
-              <td>$2000.00</td>
-            </tr>
-            <tr>
-              <td>Kina Bhut</td>
-              <td>05-08-2019 11.00AM</td>
-              <td>01-11-2020 7.00PM</td>
-              <td>Double Queen with Kitchen</td>
-              <td>200</td>
-              <td>$100</td>
-              <td>$10000</td>
-              <td>Credit Card-$10000.00</td>
-              <td>$0.00</td>
-            </tr>
-            <tr>
-              <td>Rahul Sridhar</td>
-              <td>11-01-2020 01.00PM</td>
-              <td>01-31-2021 07.00PM</td>
-              <td>Suite</td>
-              <td>310</td>
-              <td>$500</td>
-              <td>$20000</td>
-              <td>Credit Card-$15000.00</td>
-              <td>$5000.00</td>
-            </tr>
-          </tbody>
-        </Table>
+        {this.state.room ? (
+          <Form onSubmit={this.handleSubmit}>
+            <Form.Row>
+              <Form.Group as={Col}>
+                <Form.Label>First Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter first name"
+                  name="first"
+                  defaultValue={
+                    this.state.room.guest && this.state.room.guest.first
+                  }
+                />
+              </Form.Group>
+
+              <Form.Group as={Col}>
+                <Form.Label>Last Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter last name"
+                  name="last"
+                  defaultValue={
+                    this.state.room.guest && this.state.room.guest.last
+                  }
+                />
+              </Form.Group>
+            </Form.Row>
+            <Form.Row>
+              <Form.Group as={Col}>
+                <Form.Label>Check In Date and Time</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="checkIn"
+                  value={this.state.room.guest && this.state.room.guest.checkIn}
+                />
+              </Form.Group>
+              <Form.Group as={Col}>
+                <Form.Label>Expected Check Out Date and Time</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="checkOut"
+                  value={
+                    this.state.room.guest && this.state.room.guest.checkOut
+                  }
+                />
+              </Form.Group>
+            </Form.Row>
+            <Form.Row>
+              <Form.Group as={Col}>
+                <Form.Label>Room Type</Form.Label>
+                <Form.Control
+                  type="text"
+                  disabled
+                  value={this.state.room.type}
+                />
+              </Form.Group>
+              <Form.Group as={Col}>
+                <Form.Label>Room Number</Form.Label>
+                <Form.Control
+                  type="number"
+                  disabled
+                  value={this.props.match.params.room}
+                />
+              </Form.Group>
+            </Form.Row>
+            <Form.Row>
+              <Form.Group as={Col}>
+                <Form.Label>Room Rate ($/Day)</Form.Label>
+                <Form.Control
+                  type="number"
+                  name="rate"
+                  value={this.state.room.guest && this.state.room.guest.rate}
+                />
+              </Form.Group>
+              <Form.Group as={Col}>
+                <Form.Label>Total Charge</Form.Label>
+                <Form.Control
+                  type="number"
+                  name="total"
+                  value={this.state.room.guest && this.state.room.guest.total}
+                />
+              </Form.Group>
+              <Form.Group as={Col}>
+                <Form.Label>Payment</Form.Label>
+                <Form.Control
+                  type="number"
+                  name="payment"
+                  value={this.state.room.guest && this.state.room.guest.payment}
+                />
+              </Form.Group>
+              <Form.Group as={Col}>
+                <Form.Label>Balance</Form.Label>
+                <Form.Control
+                  type="number"
+                  name="balance"
+                  value={this.state.room.guest && this.state.room.guest.balance}
+                />
+              </Form.Group>
+            </Form.Row>
+
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+            <Button
+              variant="secondary"
+              type="button"
+              style={{ marginLeft: "2rem" }}
+              onClick={this.handleCheckOut}
+            >
+              Check Out
+            </Button>
+          </Form>
+        ) : (
+          <div>That room does not exist.</div>
+        )}
       </div>
     );
   }

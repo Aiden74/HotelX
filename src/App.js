@@ -21,7 +21,7 @@ function App() {
           <Route path="/housekeeping" component={Housekeeping} />
           <Route path="/profile" component={Profile} />
           <Route path="/reservation" component={Reservation} />
-          <Route path="/stay" component={Stay} />
+          <Route path="/stay/:room" component={Stay} />
           <Route path="/report" component={Report} />
         </DashboardLayout>
       </Switch>
