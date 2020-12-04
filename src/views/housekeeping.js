@@ -1,6 +1,7 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 import { withStyles } from "@material-ui/core/styles";
+import { SettingsBluetoothSharp } from "@material-ui/icons";
 
 const styles = (theme) => ({
   //Add your styles here
@@ -9,24 +10,14 @@ class Housekeeping extends React.Component {
   componentDidMount() {
     document.title = "Housekeeping - HotelX";
   }
-
-  state = {
-    selectAll: false, roomStatus: false, bathroomStatus: false
-  };
-
-  onChange = e =>{
-    this.setState({selectAll: e.target.checked});
-    this.setState({bathroomStatus: e.target.checked});
-  }
   
 
   render() {
     const { classes } = this.props;
     //Add your code here
-    const {selectAll, roomStatus, bathroomStatus} = this.state;
 
     const guest = [
-      {houseKeepName: "Aiden", roomNumber: 310, type: "King", status: "Available", bathroom: "Clean", towels: 2, bedSheets: 2, vaccum: "Clean", dusting: "Needs cleaning", electronics: "Need fixing"},
+      {houseKeepName: "Aiden", roomNumber: 310, type: "King", status: "Unavailable", bathroom: "Clean", towels: 2, bedSheets: 2, vaccum: "Clean", dusting: "Needs cleaning", electronics: "Need fixing"},
       {houseKeepName: "Kirti Chaudhari", roomNumber: 312, type: "Double Queen", status: "Unavailable", bathroom: "Clean", towels: 1, bedSheets: 2, vaccum: "Dirty", dusting: "Needs cleaning", electronics: "Up to date"},
       {houseKeepName: "Jose A", roomNumber: 200, type: "King", status: "Unavailable", bathroom: "Clean", towels: 1, bedSheets: 0, vaccum: "Dirty", dusting: "Needs cleaning", electronics: "Need fixing"},
       {houseKeepName: "John Doe", roomNumber: 201, type: "Double Queen", status: "Unavailable", bathroom: "Clean", towels: 2, bedSheets: 1, vaccum: "Clean", dusting: "None", electronics: "Need fixing"}
@@ -34,6 +25,7 @@ class Housekeeping extends React.Component {
 
     const renderGuest = (guest, index) => {
       return(
+        
         <tr key={index}>
           <td> <input type = "checkbox"/> {guest.houseKeepName}</td>
           <td>{guest.roomNumber}</td>
