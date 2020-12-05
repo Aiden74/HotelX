@@ -8,7 +8,10 @@ import Profile from "./views/profile";
 import Reservation from "./views/reservation";
 import Stay from "./views/stay";
 import Report from "./views/report";
+import ReservationHome from "./views/ReservationHome";
+import AddReservation from "./views/addreservation";
 import GuestSearch from "./views/guestSearch";
+
 function App() {
   return (
     <BrowserRouter>
@@ -24,6 +27,8 @@ function App() {
           <Route path="/reservation" component={Reservation} />
           <Route path="/stay/:room" component={Stay} />
           <Route path="/report" component={Report} />
+          <Route path="/ReservationHome" component={ReservationHome} />
+          <Route path="/addreservation" component={AddReservation} />
           <Route path="/guestSearch" component={GuestSearch} />
         </DashboardLayout>
       </Switch>

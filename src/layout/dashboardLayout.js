@@ -33,6 +33,7 @@ class DashboardLayout extends React.Component {
               <Nav.Link href="/profile">Guest Profile</Nav.Link>
               <Nav.Link href="/stay">Stay</Nav.Link>
               <Nav.Link href="/report">Report</Nav.Link>
+              <Nav.Link href="/ReservationHome">Reservation Home</Nav.Link>
               <Nav.Link href="/guestSearch">Guest Search</Nav.Link>
             </Nav>
             <Nav>

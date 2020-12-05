@@ -1,5 +1,6 @@
 import React from "react";
 import { Table } from "react-bootstrap";
+
 class CurrentStatus extends React.Component {
   constructor(props) {
     super(props);
