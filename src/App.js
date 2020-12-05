@@ -9,7 +9,7 @@ import Reservation from "./views/reservation";
 import Stay from "./views/stay";
 import Report from "./views/report";
 import ReservationHome from "./views/ReservationHome";
-
+import AddReservation from "./views/addreservation";
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
           <Route path="/stay/:room" component={Stay} />
           <Route path="/report" component={Report} />
           <Route path="/ReservationHome" component={ReservationHome} />
-          
+          <Route path="/addreservation" component={AddReservation} />
         </DashboardLayout>
       </Switch>
     </BrowserRouter>
