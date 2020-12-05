@@ -1,6 +1,7 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 import { withStyles } from "@material-ui/core/styles";
+import { SettingsBluetoothSharp } from "@material-ui/icons";
 
 const styles = (theme) => ({
   //Add your styles here
@@ -9,10 +10,38 @@ class Housekeeping extends React.Component {
   componentDidMount() {
     document.title = "Housekeeping - HotelX";
   }
+  
 
   render() {
     const { classes } = this.props;
     //Add your code here
+
+    const guest = [
+      {houseKeepName: "Aiden", roomNumber: 310, type: "King", status: "Unavailable", bathroom: "Clean", towels: 2, bedSheets: 2, vaccum: "Clean", dusting: "Needs cleaning", electronics: "Need fixing"},
+      {houseKeepName: "Kirti Chaudhari", roomNumber: 312, type: "Double Queen", status: "Unavailable", bathroom: "Clean", towels: 1, bedSheets: 2, vaccum: "Dirty", dusting: "Needs cleaning", electronics: "Up to date"},
+      {houseKeepName: "Jose A", roomNumber: 200, type: "King", status: "Unavailable", bathroom: "Clean", towels: 1, bedSheets: 0, vaccum: "Dirty", dusting: "Needs cleaning", electronics: "Need fixing"},
+      {houseKeepName: "John Doe", roomNumber: 201, type: "Double Queen", status: "Unavailable", bathroom: "Clean", towels: 2, bedSheets: 1, vaccum: "Clean", dusting: "None", electronics: "Need fixing"}
+    ]
+
+    const renderGuest = (guest, index) => {
+      return(
+        
+        <tr key={index}>
+          <td> <input type = "checkbox"/> {guest.houseKeepName}</td>
+          <td>{guest.roomNumber}</td>
+          <td>{guest.type}</td>
+          <td> <input type = "checkbox"/> {guest.status}</td>
+          <td> <input type = "checkbox"/> {guest.bathroom}</td>
+          <td> <input type = "checkbox"/> {guest.towels}</td>
+          <td> <input type = "checkbox"/> {guest.bedSheets}</td>
+          <td> <input type = "checkbox"/> {guest.vaccum}</td>
+          <td> <input type = "checkbox"/> {guest.dusting}</td>
+          <td> <input type = "checkbox"/> {guest.electronics}</td>
+        </tr>
+        
+      )
+    }
+
     return (
       <div>
         <Table striped bordered hover variant="dark">
@@ -31,59 +60,13 @@ class Housekeeping extends React.Component {
             </tr>
           </thead>
           <tbody>
-          <tr>
-              <td>Aiden</td>
-              <td>310</td>
-              <td>King</td>
-              <td>Available</td>
-              <td>clean</td>
-              <td>2</td>
-              <td>2</td>
-              <td>Clean</td>
-              <td>need to Clean</td>
-              <td>Needs to fix</td>
-            </tr>
-
-            <tr>
-              <td>Kirti Chaudhari</td>
-              <td>312</td>
-              <td>Double Queen</td>
-              <td>Unavailable</td>
-              <td>occupied</td>
-              <td>1</td>
-              <td>2</td>
-              <td>Unclean</td>
-              <td>Need to clean</td>
-              <td>Up to date</td>
-            </tr>
-          <tr>
-              <td>Jose A</td>
-              <td>200</td>
-              <td>Double queen with Kitchen</td>
-              <td>Unavailable</td>
-              <td>Dirty</td>
-              <td>1</td>
-              <td>0</td>
-              <td>Unclean</td>
-              <td>Need to clean</td>
-              <td>Need to fix</td>
-            </tr>
-            <tr>
-              <td>Michael Silvera</td>
-              <td>215</td>
-              <td>Suite</td>
-              <td>Unavailable</td>
-              <td>Maintenance</td>
-              <td>2</td>
-              <td>2</td>
-              <td>Unclean</td>
-              <td>Need to clean</td>
-              <td>Up to date</td>
-            </tr>
+            {guest.map(renderGuest)}
           </tbody>
 
         </Table>
+        
       </div>
+      
     );
   }
 }
