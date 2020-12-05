@@ -1,7 +1,6 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 import { withStyles } from "@material-ui/core/styles";
-import { SettingsBluetoothSharp } from "@material-ui/icons";
 
 const styles = (theme) => ({
   //Add your styles here
