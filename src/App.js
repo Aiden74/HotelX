@@ -9,8 +9,6 @@ import Reservation from "./views/reservation";
 import Stay from "./views/stay";
 import Report from "./views/report";
 import ReservationHome from "./views/ReservationHome";
-import AddReservation from "./views/addreservation";
-import GuestSearch from "./views/guestSearch";
 import DeleteReservation from "./views/deletereservation";
 
 function App() {
@@ -29,9 +27,7 @@ function App() {
           <Route path="/stay/:room" component={Stay} />
           <Route path="/report" component={Report} />
           <Route path="/ReservationHome" component={ReservationHome} />
-          <Route path="/addreservation" component={AddReservation} />
           <Route path="/deletereservation" component={DeleteReservation} />
-          <Route path="/guestSearch" component={GuestSearch} />
         </DashboardLayout>
       </Switch>
     </BrowserRouter>

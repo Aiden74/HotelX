@@ -1,7 +1,7 @@
 import React from "react";
 
 function clickMe() {
-  alert("You clicked me!");
+  alert("Directing to Reservation Page!");
 }
 function deleteMe() {
   alert("would you like to delete?");
@@ -14,7 +14,7 @@ export default function ReservationHome() {
     <div>
       <tr>
         <td>
-          <a href="/addreservation">
+          <a href="/reservation">
             <button onClick={clickMe}>Add Reservation</button>
           </a>
           <br />
