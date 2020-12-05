@@ -78,7 +78,7 @@ class EditInfo extends Component{
               <lable>ID:</lable><td><input type="text" value={this.state.id} onChange={this.idhandler} placeholder="No Of Guests.."/><br /><br /></td> 
               
               <lable>License Plate </lable><td><input type="text" value={this.state.licensePlate} onChange={this.licensePlatehandler} placeholder="License" /><br /><br /><br />
-               <a href = "/ReservationHome.js">
+               <a href = "/ReservationHome">
                <td><input type="submit" value="Submit" onClick={updateMe}/></td>
                 </a>
                 </td>

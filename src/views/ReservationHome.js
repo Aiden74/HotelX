@@ -1,7 +1,7 @@
 import React from "react";
 
 function clickMe(){
-  alert('You clicked me!')
+  alert('Directing to Reservation Page!')
 }
 function deleteMe()
 {
@@ -16,13 +16,13 @@ export default function ReservationHome(){
     <div>
       <tr>
       <td>
-        <a href = "/addreservation.js">
+        <a href = "/reservation">
           <button onClick = {clickMe}>
           Add Reservation
           </button>
         </a><br /><br />
 
-        <a href = "/deletereservation.js">
+        <a href = "/deletereservation">
           <button onClick = {deleteMe}>
           Delete Reservation
           </button>
