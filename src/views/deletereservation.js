@@ -2,11 +2,11 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { Form, Col, Button } from "react-bootstrap";
 
-function deleteMe(){
-    alert('Deleted Reservation Successfully')
-  }
+function deleteMe() {
+  alert("Deleted Reservation Successfully");
+}
 const styles = (theme) => ({
-  //Add your styles here 
+  //Add your styles here
 });
 class DeleteReservation extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class DeleteReservation extends React.Component {
       room: null,
     };
   }
-  
+
   componentDidMount() {
     document.title = "Delete Reservation  - HotelX";
     var rooms = JSON.parse(localStorage.getItem("rooms"));
@@ -49,7 +49,7 @@ class DeleteReservation extends React.Component {
     localStorage.setItem("rooms", JSON.stringify(rooms));
     window.location.reload(false);
   };
-  
+
   render() {
     const { classes } = this.props;
     //Add your code here
@@ -154,13 +154,12 @@ class DeleteReservation extends React.Component {
                 />
               </Form.Group>
             </Form.Row>
-            
-            <a href = "/main.js">
-            <Button variant="primary" type="submit" onClick={deleteMe}>
-              Delete Reservation
-            </Button>
+
+            <a href="/main.js">
+              <Button variant="primary" type="submit" onClick={deleteMe}>
+                Delete Reservation
+              </Button>
             </a>
-            
 
             <Button
               variant="secondary"
