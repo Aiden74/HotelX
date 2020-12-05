@@ -32,7 +32,15 @@ class Profile extends React.Component {
           <Button variant="contained" color="primary">
             Search
           </Button>
-        </Form>
+          <br />
+          <br />
+          <a href="/editInfo.js">
+          <Button variant="contained" color="primary">
+           Edit Guest Information
+          </Button>
+          </a>
+          
+      </Form>
 
         <div className={classes.profile}>
           <Grid container spacing={3}>

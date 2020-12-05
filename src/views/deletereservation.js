@@ -1,18 +1,23 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { Form, Col, Button } from "react-bootstrap";
+
+function deleteMe(){
+    alert('Deleted Reservation Successfully')
+  }
 const styles = (theme) => ({
   //Add your styles here 
 });
-class Stay extends React.Component {
+class DeleteReservation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       room: null,
     };
   }
+  
   componentDidMount() {
-    document.title = "Stay  - HotelX";
+    document.title = "Delete Reservation  - HotelX";
     var rooms = JSON.parse(localStorage.getItem("rooms"));
     this.setState({ room: rooms && rooms[this.props.match.params.room] });
   }
@@ -44,6 +49,7 @@ class Stay extends React.Component {
     localStorage.setItem("rooms", JSON.stringify(rooms));
     window.location.reload(false);
   };
+  
   render() {
     const { classes } = this.props;
     //Add your code here
@@ -148,10 +154,14 @@ class Stay extends React.Component {
                 />
               </Form.Group>
             </Form.Row>
-
-            <Button variant="primary" type="submit">
-              Submit
+            
+            <a href = "/main.js">
+            <Button variant="primary" type="submit" onClick={deleteMe}>
+              Delete Reservation
             </Button>
+            </a>
+            
+
             <Button
               variant="secondary"
               type="button"
@@ -169,4 +179,4 @@ class Stay extends React.Component {
   }
 }
 
-export default withStyles(styles)(Stay);
+export default withStyles(styles)(DeleteReservation);
